@@ -1,0 +1,58 @@
+{% load static %}
+
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <title>{{ title }}</title>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1">
+    <link rel="stylesheet"
+          type="text/css"
+          href="{% static 'css/index.css' %}"/>
+    <link rel="stylesheet"
+          type="text/css"
+          href="{% static 'css/dashboard.css' %}"/>
+    <script type="text/javascript"
+            src="{% static 'jslib/jquery.3.1.1.min.js' %}">
+    </script>
+    <script type="text/javascript"
+            src="{% static 'js/dashboard.js' %}"> 
+    </script>
+    <script type="text/javascript"
+            src="{% static 'js/my_utils.js' %}"> 
+    </script>
+</head>
+
+<body>
+    <div id="outside">
+        <div id="inside">
+            <header><h2>{{ header }}</h2></header>
+            <div>
+                <form id="dashboard" action="/" method="post">
+                </form>
+                <div id="result">
+                </div>
+            </div>
+            <nav id="menu">
+                <h4 style="text-align:center">Manage</h4>
+                <ul>
+                    <li><a id="hlink" href={% url "dashboard:home" %}>Home</a></li>
+                    <li><a id="plink" href={% url "dashboard:create_parent" %}>Parent</a></li>
+                    <li><a id="pilink" href={% url "dashboard:upload_parent_image" %}>Parent Image</a></li>
+                    <li><a id="clink" href={% url "dashboard:create_child" %}>Child</a></li>
+                    <li><a id="cilink" href={% url "dashboard:upload_child_image" %}>Child Image</a></li>
+                    <li><a id=elink" href={% url "dashboard:create_event" %}>Event</a></li>
+                </ul>
+            </nav>
+            <article id="summary">
+            </article>
+            <article id="carousel">
+            </article>
+            <article id="events">
+            </article>
+            <footer>{{ footer }}</footer>
+        </div>
+    </div>
+</body>
+
+</html>

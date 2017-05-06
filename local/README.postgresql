@@ -1,0 +1,12 @@
+
+$ source ~/play/bin/activate
+(play) cd ~/Projects/client-django
+(play) ./start.py
+(play) docker ps
+(play) cd ~/Projects/family-schedule
+(play) psql --host=192.168.99.100 --port=5432 --dbname=postgres --username=postgres --file=add_db_user.sql
+password: mysecretpassword
+(play) psql --host=192.168.99.100 --port=5432 --username=tim --dbname=family --command='\dt'
+password: un3mpl0y3d
+
+

@@ -1,0 +1,7 @@
+
+if local:
+    $ python3 manage.py test -v 2
+
+if heroku:
+    PostGreSQL <database> is provided for free or with a small fee
+    but PostGreSQL <test_database> is not so validate Django tests locally

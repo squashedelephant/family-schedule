@@ -1,0 +1,18 @@
+
+# Use Heroko Virtual Environment
+$ virtualenv heroku
+$ source ~/heroku/bin/activate
+(heroku) $ 
+
+# Install Python 3.6 Dependencies
+(heroku) $ brew update
+(heroku) $ brew upgrade python3
+
+# Add /usr/local/man
+(heroku) $ sudo mkdir /usr/local/man
+Password:
+(heroku) $ sudo chown tim:admin /usr/local/man
+
+# Install Python 3.6 Modules
+(heroku) $ pip3 install -r requirements.txt
+(heroku) $ pip3 freeze
