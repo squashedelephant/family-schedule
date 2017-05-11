@@ -1,0 +1,54 @@
+
+NOTE: Django with Heroku requires Python 3.6
+
+Configure Site
+# NOTE: heroku throws away one directory layer
+$ source ~/heroku/bin/activate
+(heroku) $ cd ~/Projects/
+(heroku) $ git clone git@github.com:squashedelephant/family-schedule.git
+(heroku) $ django-admin startproject family
+(heroku) $ mv family/family family-schedule
+(heroku) $ mv family/manage.py family-schedule
+(heroku) $ rmdir family
+(heroku) $ cd family-schedule
+(heroku) $ mkdir family/static
+(heroku) $ touch family/static/README.placeholder
+(heroku) $ mkdir family/staticfiles
+(heroku) $ touch family/staticfiles/README.placeholder
+(heroku) $ vi family/settings.py
+(heroku) $ vi family/urls.py
+(heroku) $ vi family/wsgi.py
+(heroku) $ export DJANGO_SETTINGS_MODULE=family.settings
+(heroku) $ export PYTHONPATH=.:${PYTHONPATH}
+(heroku) $ python3 manage.py check
+(heroku) $ python3 manage.py makemigrations
+(heroku) $ python3 manage.py migrate
+
+Configure App
+(heroku) $ python3 manage.py startapp schedule
+(heroku) $ vi family/settings.py
+(heroku) $ python3 manage.py check
+(heroku) $ python3 manage.py makemigrations
+(heroku) $ python3 manage.py migrate
+
+Develop & Test App in Phases
+(heroku) $ vi family/urls.py
+(heroku) $ vi schedule/models.py
+(heroku) $ vi schedule/tests.py
+(heroku) $ python3 manage.py test -v 2
+(heroku) $ vi schedule/views.py
+(heroku) $ vi schedule/tests.py
+(heroku) $ python3 manage.py test -v 2
+(heroku) $ vi schedule/validate.py
+(heroku) $ vi schedule/error.py
+(heroku) $ vi schedule/message.py
+(heroku) $ vi schedule/timestamp.py
+(heroku) $ vi schedule/tests.py
+(heroku) $ python3 manage.py test -v 2
+(heroku) $ mkdir schedule/templates
+(heroku) $ mkdir schedule/templates/index.htm
+(heroku) $ mkdir schedule/templates/table.htm
+(heroku) $ vi schedule/forms.py
+(heroku) $ vi schedule/views.py
+(heroku) $ vi schedule/tests.py
+(heroku) $ python3 manage.py test -v 2

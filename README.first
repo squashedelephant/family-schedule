@@ -1,0 +1,16 @@
+
+This app is packaged to be deployed in Heroku by default on locally on a Docker VM
+
+if Heroku:
+   do nothing special
+   but when stuck:
+       follow suggestions in README.heroku
+
+if local:
+   cd family
+   cp settings.py.local settings.py
+   cd ../local
+   follow directions README.postgres
+   when stuck
+   follow suggestions in README.psql
+

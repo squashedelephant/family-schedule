@@ -1,0 +1,69 @@
+
+# GET heroku
+$ brew install heroku
+$ heroku --version
+$ heroku login
+
+# USE sample Python app
+$ git clone https://github.com/heroku/python-getting-started.git
+$ heroku create
+$ git push heroku master
+
+# LEARN Basic App Management
+# Start remote
+$ heroku ps:scale web=1
+$ heroku ps
+$ heroku open
+$ heroku logs --tail
+$ heroku ps:scale web=0
+$ heroku ps
+
+# START APP FROM virtual env
+$ virtualenv venv
+
+# Window A
+$ source venv/bin/activate
+(venv) $ cd /Projects/python-getting-started
+(venv) $ pip install -r requirements.txt
+(venv) $ python manage.py collectstatic
+
+# Start Local
+(venv) $ heroku local web -f Procfile
+(venv) $ heroku ps
+
+# Window B
+$ source venv/bin/activate
+(venv) $ heroku ps
+(venv) $ curl -X GET http://localhost:5000/
+
+# ADD PROVISION ADD-ONS
+(venv) $ heroku open
+(venv) $ heroku addons:create papertrail
+(venv) $ heroku addons
+(venv) $ heroku addons:open papertrail
+
+# REAL-TIME INTERACTION via CONSOLE
+(venv) $ heroku run python manage.py shell
+>>> print('hello world')
+>>> exit()
+(venv) $ heroku run bash
+~ $ ls /bin
+~ $ ls /usr/bin
+~ $ ps -ef
+~ $ df -h
+
+# USE CONFIG VARIABLES
+(venv) $ ls -la .env
+(venv) $ heroku config
+(venv) $ heroku config:set TIMES=2
+(venv) $ heroku local
+
+# ADD DATASTORE
+(venv) $ heroku addons
+(venv) $ heroku config
+(venv) $ heroku pg
+(venv) $ heroku pg:psql
+(venv) $ heroku run python manage.py migrate
+(venv) $ heroku ps
+(venv) $ heroku open
+(venv) $ curl -X GET https://thawing-citadel-28966.herokuapp.com/db

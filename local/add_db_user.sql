@@ -1,0 +1,14 @@
+-- IF EXISTS (SELECT datname FROM pg_database WHERE datname = 'family') THEN DROP DATABASE family END IF;
+-- IF EXISTS (SELECT datname FROM pg_database WHERE datname = 'test_family') THEN DROP DATABASE test_family END IF;
+-- IF EXISTS (SELECT usename FROM pg_user WHERE usename = 'tim') THEN DROP USER tim END IF;
+DROP DATABASE family;
+DROP DATABASE test_family;
+DROP USER tim;
+CREATE USER tim WITH PASSWORD 'un3mpl0y3d';
+ALTER USER tim CREATEDB;
+ALTER ROLE tim SET client_encoding TO 'utf8';
+ALTER ROLE tim SET default_transaction_isolation TO 'read committed';
+ALTER ROLE tim SET timezone TO 'UTC';
+CREATE DATABASE family owner tim;
+CREATE DATABASE test_family owner tim;
+GRANT ALL PRIVILEGES ON DATABASE family to tim;

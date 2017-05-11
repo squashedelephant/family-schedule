@@ -1,0 +1,7 @@
+Common Commands
+
+\l = show databases
+\du = show users
+\dt = show tables
+\q = quit
+
